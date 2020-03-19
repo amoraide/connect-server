@@ -1,0 +1,7 @@
+default:
+  id: 1
+  username: testusername
+  full_name: Test User
+  created_at: Thu, 19 Mar 2020 03:47:10 UTC +00:00
+  updated_at: Thu, 19 Mar 2020 03:47:10 UTC +00:00
+  role: 1
