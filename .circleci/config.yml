@@ -9,6 +9,12 @@ jobs:
         environment:
           BUNDLER_VERSION: 2.1.4
           RAILS_ENV: test
+      - image: circleci/mysql:8.0.4
+        environment:
+          MYSQL_ROOT_PASSWORD: test_root_password
+          MYSQL_DATABASE: test_database
+          MYSQL_USER: test_user
+          MYSQL_PASSWORD: test_password
     steps:
       - checkout
       - run:
@@ -21,6 +27,21 @@ jobs:
           name: Which bundler?
           command: bundle -v
       - ruby/bundle-install
+      - run:
+          name: Waiting for MySQL to be ready
+          command: |
+            for i in `seq 1 10`;
+            do
+              nc -z 127.0.0.1 3306 && echo Success && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo Failed waiting for MySQL && exit 1
+
+      - run:
+          name: Install MySQL CLI; Import dummy data; run an example query
+          command: |
+            sudo apt-get install default-mysql-client
       - run:
           name: Database Setup
           command: |

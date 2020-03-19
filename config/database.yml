@@ -12,7 +12,9 @@ development:
 
 test:
   <<: *default
-  database: connect_backend_test
+  database: test_database
+  username: test_user
+  password: test_password
 
 production:
   <<: *default
