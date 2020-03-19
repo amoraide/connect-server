@@ -9,7 +9,7 @@ jobs:
         environment:
           BUNDLER_VERSION: 2.1.4
           RAILS_ENV: test
-      - image: circleci/mysql:8.0.4
+      - image: circleci/mysql:5.7.29
         environment:
           MYSQL_ROOT_PASSWORD: test_root_password
           MYSQL_DATABASE: test_database
