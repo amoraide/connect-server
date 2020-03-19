@@ -12,7 +12,14 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rack-cors'
 
+group :test do
+  gem 'rspec', '3.9.0'
+  gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
+end
+
 group :development, :test do
+  gem 'capybara'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
