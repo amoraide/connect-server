@@ -12,7 +12,7 @@ jobs:
           command: |
             gem update --system
             gem install bundler:2.1.4
-            bundler config default 2.1.4
+            bundler --default -v "2.1.4"
       - checkout
       - run:
           name: Which bundler?
