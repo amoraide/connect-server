@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: connect
+  password: S0!KeW1a09s!fQ^d # Change this OBVIOUSLY
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: connect_backend_development
+
+test:
+  <<: *default
+  database: connect_backend_test
+
+production:
+  <<: *default
+  database: connect_backend_production
+  username: connect_backend
+  password: <%= ENV['CONNECT_BACKEND_DATABASE_PASSWORD'] %>
