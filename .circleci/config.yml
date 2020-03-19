@@ -6,12 +6,17 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.5.1-stretch-node
+        environment:
+          BUNDLER_VERSION: 2.1.4
     steps:
       - run:
           name: Install Dependencies
           command: |
-            gem update --system
-            gem install bundler --default -v "2.1.4"
+            sudo gem update --system
+            sudo gem uninstall bundler
+            sudo rm /usr/local/bin/bundle
+            sudo rm /usr/local/bin/bundler
+            sudo gem install bundler
       - checkout
       - run:
           name: Which bundler?
