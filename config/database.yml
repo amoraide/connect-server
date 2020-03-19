@@ -12,7 +12,10 @@ development:
 
 test:
   <<: *default
-  database: connect_backend_test
+  host: 127.0.0.1
+  database: test_database
+  username: test_user
+  password: test_password
 
 production:
   <<: *default
